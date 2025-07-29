@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Task Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .task-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .task-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+        }
+        .task-card h2 {
+            margin: 0 0 10px;
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+        .task-card .objective {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        .task-card .details {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        .task-card .details ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .task-card .deliverable, .task-card .contingency, .task-card .technical {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 10px;
+        }
+        .task-card .deliverable strong, .task-card .contingency strong, .task-card .technical strong {
+            color: #2c3e50;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 0 0 10px 10px;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            .task-list {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Task Dashboard</h1>
+        <p>AWS Cloud Security Enhancement Project</p>
+    </header>
+    <div class="container">
+        <div class="task-list">
+            <div class="task-card">
+                <h2>1. Environment Setup</h2>
+                <p class="objective">Objective: Establish a functional AWS test environment by 31st May 2025</p>
+                <div class="details">
+                    <strong>Sub-Tasks:</strong>
+                    <ul>
+                        <li>AWS Account Creation: Register free-tier AWS account for EC2, S3, RDS.</li>
+                        <li>VPC Configuration: Create VPC with public subnet (CIDR 10.0.1.0/24).</li>
+                        <li>EC2 Instance Setup: Launch t2.micro instance with SSH/HTTP access.</li>
+                        <li>S3 Bucket Creation: Create bucket with versioning enabled.</li>
+                        <li>RDS Instance Setup: Deploy MySQL RDS instance (db.t2.micro).</li>
+                        <li>Verification: SSH to EC2, upload file to S3, connect to RDS.</li>
+                    </ul>
+                </div>
+                <p class="deliverable"><strong>Deliverable:</strong> Functional AWS test environment, verified by SSH and S3 upload, by 31st May 2025.</p>
+                <p class="contingency"><strong>Contingency:</strong> Terminate unused resources or use AWS Educate credits if Free Tier limits reached.</p>
+                <p class="technical"><strong>Technical Details:</strong> Aligns with NIST SP 800-53 (SC-7) for network segmentation.</p>
+            </div>
+            <div class="task-card">
+                <h2>2. Data Loss Prevention Setup</h2>
+                <p class="objective">Objective: Implement AWS Macie for S3 scanning by 14th June 2025</p>
+                <div class="details">
+                    <strong>Sub-Tasks:</strong>
+                    <ul>
+                        <li>Macie Activation: Enable Macie and link to S3 bucket.</li>
+                        <li>S3 Scan Configuration: Scan for basic PII using default identifiers.</li>
+                        <li>IAM Role Setup: Create role with S3 read-only access, apply bucket policy.</li>
+                        <li>Verification: Review Macie scan results in console.</li>
+                    </ul>
+                </div>
+                <p class="deliverable"><strong>Deliverable:</strong> DLP configuration report, verified by Macie, by 14th June 2025.</p>
+                <p class="contingency"><strong>Contingency:</strong> Manually check S3 permissions if Macie fails.</p>
+                <p class="technical"><strong>Technical Details:</strong> Meets GDPR Article 32 for data protection.</p>
+            </div>
+            <div class="task-card">
+                <h2>3. Encryption Implementation</h2>
+                <p class="objective">Objective: Configure encryption for S3, RDS, EC2 by 5th July 2025</p>
+                <div class="details">
+                    <strong>Sub-Tasks:</strong>
+                    <ul>
+                        <li>S3 Encryption: Enable AES-256 encryption on bucket.</li>
+                        <li>RDS Encryption: Enable encryption at rest with default KMS key.</li>
+                        <li>HTTPS Configuration: Provision TLS certificate for EC2 web server.</li>
+                        <li>Verification: Confirm encryption with CLI and OpenSSL.</li>
+                    </ul>
+                </div>
+                <p class="deliverable"><strong>Deliverable:</strong> Encrypted S3, RDS, and HTTPS-enabled EC2, tested by 5th July 2025.</p>
+                <p class="contingency"><strong>Contingency:</strong> Use default S3 encryption or self-signed certificate if needed.</p>
+                <p class="technical"><strong>Technical Details:</strong> Aligns with NIST SP 800-53 (SC-28) and GDPR.</p>
+            </div>
+            <div class="task-card">
+                <h2>4. DDoS Protection Configuration</h2>
+                <p class="objective">Objective: Enable AWS Shield and WAF by 26th July 2025</p>
+                <div class="details">
+                    <strong>Sub-Tasks:</strong>
+                    <ul>
+                        <li>Shield Standard Activation: Enable for VPC resources.</li>
+                        <li>WAF Configuration: Create web ACL with rate-limiting rule.</li>
+                        <li>Attack Simulation: Simulate HTTP flood with JMeter.</li>
+                        <li>Verification: Review CloudWatch logs for threat handling.</li>
+                    </ul>
+                </div>
+                <p class="deliverable"><strong>Deliverable:</strong> Protected environment, confirmed by JMeter, by 26th July 2025.</p>
+                <p class="contingency"><strong>Contingency:</strong> Use Shield Standard if WAF fails.</p>
+                <p class="technical"><strong>Technical Details:</strong> Simulates Layer 7 attacks per NIST SP 800-53 (SC-5).</p>
+            </div>
+            <div class="task-card">
+                <h2>5. Penetration Testing</h2>
+                <p class="objective">Objective: Conduct penetration testing by 16th August 2025</p>
+                <div class="details">
+                    <strong>Sub-Tasks:</strong>
+                    <ul>
+                        <li>AWS Approval: Submit security approval by 12th July 2025.</li>
+                        <li>Network Scanning: Run Nmap on EC2 for open ports.</li>
+                        <li>Web Vulnerability Testing: Use OWASP ZAP for basic scans.</li>
+                        <li>Verification: Document and fix vulnerabilities, re-scan.</li>
+                    </ul>
+                </div>
+                <p class="deliverable"><strong>Deliverable:</strong> Vulnerability report with fixes, by 16th August 2025.</p>
+                <p class="contingency"><strong>Contingency:</strong> Use AWS Trusted Advisor or manual checks if tests fail.</p>
+                <p class="technical"><strong>Technical Details:</strong> Aligns with NIST SP 800-115 for minimal resource use.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Designed for AWS Cloud Security Project | Last Updated: July 29, 2025</p>
+    </footer>
+</body>
+</html>
